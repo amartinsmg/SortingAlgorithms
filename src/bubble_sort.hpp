@@ -3,7 +3,7 @@
 template <typename T>
 T *bubble_sort(T *values, unsigned length)
 {
-  T num, *result = malloc(sizeof(*result) * length);
+  T num, *result = (T *)malloc(sizeof(*result) * length);
   unsigned i, j = 0;
   bool changes;
   for (i = 0; i < length; i++)
