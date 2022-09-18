@@ -1,9 +1,9 @@
 #include <iostream>
 
 template <typename T>
-T *selection_sort(double *values, unsigned length)
+T *selection_sort(T *values, unsigned length)
 {
-  T num, *result = malloc(sizeof(*result) * length);
+  T num, *result = (T *)malloc(sizeof(*result) * length);
   unsigned i, j;
   for (i = 0; i < length; i++)
     result[i] = values[i];
