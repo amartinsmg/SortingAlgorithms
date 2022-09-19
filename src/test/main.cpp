@@ -120,13 +120,6 @@ int main()
   compareArrays<int>(sortedArr2, merge_sort<int>(arr2, NUM), NUM);
   compareArrays<long long>(sortedArr3, merge_sort<long long>(arr3, NUM), NUM);
 
-  // unsigned n = 9;
-  // int testArr[n] = {5, 2, 3, 2, 2, 11, 2, 3, 7};
-  // int *test = merge_sort(arr3, NUM);
-
-  // for (int i = 0; i < NUM; i++)
-  //   std::cout << test[i] << " ";
-
   std::cout << "Passed all tests successfully!\n";
 
   return 0;
