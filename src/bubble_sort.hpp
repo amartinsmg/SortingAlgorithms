@@ -22,9 +22,7 @@ T *bubble_sort(T *values, unsigned length)
       }
     }
     if (!changes)
-    {
       break;
-    }
   }
   return result;
 }
