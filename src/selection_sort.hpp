@@ -1,16 +1,19 @@
 #include <iostream>
+#include <cassert>
 
 template <typename T>
 T *selection_sort(T *values, unsigned length)
 {
-  T num, *result = (T *)malloc(sizeof(*result) * length);
+  T num, *result = new T[length];
   unsigned i, j;
+  assert(length > 0);
   for (i = 0; i < length; i++)
     result[i] = values[i];
   for (i = 0; i < length; i++)
   {
     num = result[i];
-    for (j = i + 1; j < length; j++)
+    j = i;
+    while (++j < length)
     {
       if (result[j] < num)
       {
