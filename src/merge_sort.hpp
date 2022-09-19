@@ -1,21 +1,24 @@
 #include <iostream>
+#include <cassert>
 #include <cmath>
 
 template <typename T>
 T *merge_sort(T *values, unsigned length)
 {
-  T *intermediate1 = (T *)malloc(sizeof(T) * length),
-    *intermediate2 = (T *)malloc(sizeof(T) * length),
+  T *intermediate1 = new T[length],
+    *intermediate2 = new T[length],
     *from = NULL,
     *to = NULL,
     *left = NULL,
     *right = NULL,
     *result = NULL;
-  unsigned const LOG2 = ceil(log2(length));
-  unsigned i, j, k, toIndex, leftIndex, rightIndex, power2_i, half;
+  unsigned i, j, k, toIndex, leftIndex, rightIndex,
+      log2_length, power2_i, half;
+  assert(length > 0);
+  log2_length = ceil(log2(length));
   for (i = 0; i < length; i++)
-    intermediate1[i] = intermediate2[i] = values[i];
-  for (i = 1; i <= LOG2; i++)
+    intermediate1[i] = values[i];
+  for (i = 1; i <= log2_length; i++)
   {
     from = i % 2 ? intermediate1 : intermediate2,
     to = !(i % 2) ? intermediate1 : intermediate2;
@@ -27,10 +30,9 @@ T *merge_sort(T *values, unsigned length)
       left = (T *)(from + j);
       right = (T *)(left + half);
       leftIndex = rightIndex = 0;
-      for (k = 0; k < power2_i; k++)
+      k = -1;
+      while (++k < power2_i && toIndex < length)
       {
-        if (toIndex >= length)
-          break;
         if (leftIndex >= half)
           to[toIndex++] = right[rightIndex++];
         else if (rightIndex >= half || j + half + rightIndex >= length)
@@ -40,6 +42,6 @@ T *merge_sort(T *values, unsigned length)
       }
     }
   }
-  result = LOG2 % 2 ? intermediate2 : intermediate1;
+  result = log2_length % 2 ? intermediate2 : intermediate1;
   return result;
 }
