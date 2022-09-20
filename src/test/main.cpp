@@ -4,6 +4,7 @@
 #include "../insertion_sort.hpp"
 #include "../selection_sort.hpp"
 #include "../merge_sort.hpp"
+#include "../quick_sort.hpp"
 
 #define NUM 127
 
@@ -119,6 +120,10 @@ int main()
   compareArrays<double>(sortedArr1, merge_sort<double>(arr1, NUM), NUM);
   compareArrays<int>(sortedArr2, merge_sort<int>(arr2, NUM), NUM);
   compareArrays<long long>(sortedArr3, merge_sort<long long>(arr3, NUM), NUM);
+
+  compareArrays<double>(sortedArr1, quick_sort<double>(arr1, NUM), NUM);
+  compareArrays<int>(sortedArr2, quick_sort<int>(arr2, NUM), NUM);
+  compareArrays<long long>(sortedArr3, quick_sort<long long>(arr3, NUM), NUM);
 
   std::cout << "Passed all tests successfully!\n";
 
