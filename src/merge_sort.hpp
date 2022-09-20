@@ -7,11 +7,7 @@ T *merge_sort(T *values, unsigned length)
 {
   T *intermediate1 = new T[length],
     *intermediate2 = new T[length],
-    *from = NULL,
-    *to = NULL,
-    *left = NULL,
-    *right = NULL,
-    *result = NULL;
+    *from, *to, *left, *right, *result;
   unsigned i, j, k, toIndex, leftIndex, rightIndex,
       log2_length, power2_i, half;
   assert(length > 0);
