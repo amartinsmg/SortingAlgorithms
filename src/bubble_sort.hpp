@@ -5,24 +5,26 @@ template <typename T>
 T *bubble_sort(T *values, unsigned length)
 {
   T num, *result = new T[length];
-  unsigned i, j = 0;
-  bool changes = true;
+  unsigned i, j;
+  bool changes;
   assert(length > 0);
   for (i = 0; i < length; i++)
     result[i] = values[i];
-  while (++j < length && changes)
+  for (i = 0; i < length; i++)
   {
     changes = false;
-    for (i = 1; i < length; i++)
+    for (j = 1; j < length; j++)
     {
-      num = result[i];
-      if (num < result[i - 1])
+      num = result[j];
+      if (num < result[j - 1])
       {
-        result[i] = result[i - 1];
-        result[i - 1] = num;
+        result[j] = result[j - 1];
+        result[j - 1] = num;
         changes = true;
       }
     }
+    if (!changes)
+      break;
   }
   return result;
 }
