@@ -3,7 +3,7 @@
 #include <cmath>
 
 template <typename T>
-T *merge_sort(T *values, unsigned length)
+T *mergesort(T *values, unsigned length)
 {
   T *intermediate1 = new T[length],
     *intermediate2 = new T[length],
