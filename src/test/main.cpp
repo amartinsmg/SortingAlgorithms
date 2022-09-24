@@ -1,10 +1,11 @@
 #include <iostream>
 #include <cassert>
-#include "../bubble_sort.hpp"
-#include "../insertion_sort.hpp"
-#include "../selection_sort.hpp"
-#include "../merge_sort.hpp"
-#include "../quick_sort.hpp"
+#include "../bubblesort.hpp"
+#include "../heapsort.hpp"
+#include "../insertionsort.hpp"
+#include "../mergesort.hpp"
+#include "../quicksort.hpp"
+#include "../selectionsort.hpp"
 
 #define NUM 127
 
@@ -76,6 +77,7 @@ int main()
                          86, 87, 87, 87, 89, 90, 90, 92, 92, 93, 93,
                          93, 94, 95, 95, 95, 96, 97, 97, 98, 99, 99,
                          99, 100};
+
   long long arr3[NUM] = {5476, 5476, 9216, 1600, 6889, 1024, 289, 324, 5041,
                          1936, 100, 144, 3969, 3600, 441, 6724, 3481, 16, 16,
                          729, 2025, 7921, 5041, 1296, 8836, 1936, 1, 6084, 5476,
@@ -105,25 +107,29 @@ int main()
                                8281, 8649, 8836, 8836, 9025, 9025, 9216, 9216,
                                9216, 9604, 10000, 10000};
 
-  compareArrays<double>(sortedArr1, bubble_sort<double>(arr1, NUM), NUM);
-  compareArrays<int>(sortedArr2, bubble_sort<int>(arr2, NUM), NUM);
-  compareArrays<long long>(sortedArr3, bubble_sort<long long>(arr3, NUM), NUM);
+  compareArrays<double>(sortedArr1, bubblesort<double>(arr1, NUM), NUM);
+  compareArrays<int>(sortedArr2, bubblesort<int>(arr2, NUM), NUM);
+  compareArrays<long long>(sortedArr3, bubblesort<long long>(arr3, NUM), NUM);
 
-  compareArrays<double>(sortedArr1, insertion_sort<double>(arr1, NUM), NUM);
-  compareArrays<int>(sortedArr2, insertion_sort<int>(arr2, NUM), NUM);
-  compareArrays<long long>(sortedArr3, insertion_sort<long long>(arr3, NUM), NUM);
+  compareArrays<double>(sortedArr1, insertionsort<double>(arr1, NUM), NUM);
+  compareArrays<int>(sortedArr2, insertionsort<int>(arr2, NUM), NUM);
+  compareArrays<long long>(sortedArr3, insertionsort<long long>(arr3, NUM), NUM);
 
-  compareArrays<double>(sortedArr1, selection_sort<double>(arr1, NUM), NUM);
-  compareArrays<int>(sortedArr2, selection_sort<int>(arr2, NUM), NUM);
-  compareArrays<long long>(sortedArr3, selection_sort<long long>(arr3, NUM), NUM);
+  compareArrays<double>(sortedArr1, selectionsort<double>(arr1, NUM), NUM);
+  compareArrays<int>(sortedArr2, selectionsort<int>(arr2, NUM), NUM);
+  compareArrays<long long>(sortedArr3, selectionsort<long long>(arr3, NUM), NUM);
 
-  compareArrays<double>(sortedArr1, merge_sort<double>(arr1, NUM), NUM);
-  compareArrays<int>(sortedArr2, merge_sort<int>(arr2, NUM), NUM);
-  compareArrays<long long>(sortedArr3, merge_sort<long long>(arr3, NUM), NUM);
+  compareArrays<double>(sortedArr1, mergesort<double>(arr1, NUM), NUM);
+  compareArrays<int>(sortedArr2, mergesort<int>(arr2, NUM), NUM);
+  compareArrays<long long>(sortedArr3, mergesort<long long>(arr3, NUM), NUM);
 
-  compareArrays<double>(sortedArr1, quick_sort<double>(arr1, NUM), NUM);
-  compareArrays<int>(sortedArr2, quick_sort<int>(arr2, NUM), NUM);
-  compareArrays<long long>(sortedArr3, quick_sort<long long>(arr3, NUM), NUM);
+  compareArrays<double>(sortedArr1, quicksort<double>(arr1, NUM), NUM);
+  compareArrays<int>(sortedArr2, quicksort<int>(arr2, NUM), NUM);
+  compareArrays<long long>(sortedArr3, quicksort<long long>(arr3, NUM), NUM);
+
+  compareArrays<double>(sortedArr1, heapsort<double>(arr1, NUM), NUM);
+  compareArrays<int>(sortedArr2, heapsort<int>(arr2, NUM), NUM);
+  compareArrays<long long>(sortedArr3, heapsort<long long>(arr3, NUM), NUM);
 
   std::cout << "Passed all tests successfully!\n";
 
