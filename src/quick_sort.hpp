@@ -1,13 +1,14 @@
 #include <iostream>
 #include <cassert>
+#include <cstdlib>
 
 template <typename T>
 T *quick_sort(T *values, unsigned length)
 {
   T num, pivot, *result = new T[length];
-  unsigned i, j, k, firstI, lastI,
-      indexesLength = 0,
-      **indexes = (unsigned **)malloc(sizeof(*indexes) * ++indexesLength);
+  unsigned indexesLength = 0,
+           **indexes = (unsigned **)malloc(sizeof(*indexes) * ++indexesLength),
+           i, j, k, firstI, lastI;
   indexes[0] = (unsigned *)malloc(sizeof(**indexes) * 2);
   indexes[0][0] = 0;
   indexes[0][1] = length - 1;
@@ -19,7 +20,10 @@ T *quick_sort(T *values, unsigned length)
     k = firstI = indexes[i][0];
     lastI = indexes[i][1];
     if (firstI == lastI)
+    {
+      free(indexes[i]);
       continue;
+    }
     pivot = result[lastI];
     for (j = k; j < lastI; j++)
     {
@@ -48,6 +52,7 @@ T *quick_sort(T *values, unsigned length)
       indexes[j][0] = k + 1;
       indexes[j][1] = lastI;
     }
+    free(indexes[i]);
   }
 
   return result;
