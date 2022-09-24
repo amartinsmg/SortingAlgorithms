@@ -2,7 +2,7 @@
 #include <cassert>
 
 template <typename T>
-T *selection_sort(T *values, unsigned length)
+T *selectionsort(T *values, unsigned length)
 {
   T *result = new T[length],
     tmp;
