@@ -6,8 +6,7 @@ T *insertionsort(T *values, unsigned length)
 {
   T *result = new T[length],
     tmp;
-  unsigned i;
-  int j;
+  int i, j;
   assert(length > 0);
   result[0] = values[0];
   for (i = 1; i < length; i++)
