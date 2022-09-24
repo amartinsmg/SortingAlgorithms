@@ -2,9 +2,10 @@
 #include <cassert>
 
 template <typename T>
-T *bubble_sort(T *values, unsigned length)
+T *bubblesort(T *values, unsigned length)
 {
-  T num, *result = new T[length];
+  T *result = new T[length],
+    tmp;
   unsigned i, j;
   bool changes;
   assert(length > 0);
@@ -15,11 +16,11 @@ T *bubble_sort(T *values, unsigned length)
     changes = false;
     for (j = 1; j < length; j++)
     {
-      num = result[j];
-      if (num < result[j - 1])
+      tmp = result[j];
+      if (tmp < result[j - 1])
       {
         result[j] = result[j - 1];
-        result[j - 1] = num;
+        result[j - 1] = tmp;
         changes = true;
       }
     }
