@@ -3,11 +3,12 @@
 #include <cstdlib>
 
 template <typename T>
-T *quick_sort(T *values, unsigned length)
+T *quicksort(T *values, unsigned length)
 {
-  T num, pivot, *result = new T[length];
-  unsigned indexesLength = 0,
-           **indexes = (unsigned **)malloc(sizeof(*indexes) * ++indexesLength),
+  T *result = new T[length],
+    pivot, tmp;
+  unsigned **indexes = (unsigned **)malloc(sizeof(*indexes)),
+           indexesLength = 1,
            i, j, k, firstI, lastI;
   indexes[0] = (unsigned *)malloc(sizeof(**indexes) * 2);
   indexes[0][0] = 0;
@@ -29,9 +30,9 @@ T *quick_sort(T *values, unsigned length)
     {
       if (result[j] < pivot)
       {
-        num = result[k];
+        tmp = result[k];
         result[k++] = result[j];
-        result[j] = num;
+        result[j] = tmp;
       }
     }
     result[lastI] = result[k];
