@@ -20,11 +20,9 @@ T *quicksort(T *values, unsigned length)
   {
     k = firstI = indexes[i][0];
     lastI = indexes[i][1];
+    free(indexes[i]);
     if (firstI == lastI)
-    {
-      free(indexes[i]);
       continue;
-    }
     pivot = result[lastI];
     for (j = k; j < lastI; j++)
     {
@@ -53,7 +51,6 @@ T *quicksort(T *values, unsigned length)
       indexes[j][0] = k + 1;
       indexes[j][1] = lastI;
     }
-    free(indexes[i]);
   }
 
   return result;
