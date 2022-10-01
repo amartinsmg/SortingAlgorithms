@@ -6,6 +6,7 @@
 #include "../mergesort.hpp"
 #include "../quicksort.hpp"
 #include "../selectionsort.hpp"
+#include "../shellsort.hpp"
 
 #define NUM 127
 
@@ -130,6 +131,10 @@ int main()
   compareArrays<double>(sortedArr1, heapsort<double>(arr1, NUM), NUM);
   compareArrays<int>(sortedArr2, heapsort<int>(arr2, NUM), NUM);
   compareArrays<long long>(sortedArr3, heapsort<long long>(arr3, NUM), NUM);
+
+  compareArrays<double>(sortedArr1, shellsort<double>(arr1, NUM), NUM);
+  compareArrays<int>(sortedArr2, shellsort<int>(arr2, NUM), NUM);
+  compareArrays<long long>(sortedArr3, shellsort<long long>(arr3, NUM), NUM);
 
   std::cout << "Passed all tests successfully!\n";
 
