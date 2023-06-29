@@ -1,4 +1,4 @@
-#include <iostream>
+#include <cassert>
 
 template <typename T>
 T *heapsort(T *values, unsigned length)
@@ -8,6 +8,7 @@ T *heapsort(T *values, unsigned length)
   unsigned heapLength = length,
            left, right;
   int i, j;
+  assert(length > 0);
   for (i = 0; i < length; i++)
     result[i] = values[i];
   while (heapLength > 1)
