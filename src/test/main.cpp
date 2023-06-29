@@ -1,12 +1,12 @@
 #include <iostream>
 #include <cassert>
-#include "../bubblesort.hpp"
-#include "../heapsort.hpp"
-#include "../insertionsort.hpp"
-#include "../mergesort.hpp"
-#include "../quicksort.hpp"
-#include "../selectionsort.hpp"
-#include "../shellsort.hpp"
+#include <bubblesort.hpp>
+#include <heapsort.hpp>
+#include <insertionsort.hpp>
+#include <mergesort.hpp>
+#include <quicksort.hpp>
+#include <selectionsort.hpp>
+#include <shellsort.hpp>
 
 #define NUM 127
 
