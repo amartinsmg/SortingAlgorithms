@@ -2,41 +2,40 @@
 #include <cmath>
 
 template <typename T>
-T *mergesort(T *values, unsigned length)
+T *mergesort(T *arr, int length)
 {
-  T *intermediate1 = new T[length],
-    *intermediate2 = new T[length],
-    *from, *to, *left, *right, *result;
-  unsigned i, j, k, toIndex, leftIndex, rightIndex,
-      log2_length, power2_i, half;
+  T *buffer1 = new T[length],
+    *buffer2 = new T[length],
+    *src, *target, *left, *right, *result;
+  int i, j, k, half, targetIndex, leftIndex, rightIndex, log2_length, pow2_i;
   assert(length > 0);
-  log2_length = ceil(log2(length));
+  log2_length = (int)ceil(log2((double)length));
   for (i = 0; i < length; i++)
-    intermediate1[i] = values[i];
+    buffer1[i] = arr[i];
   for (i = 1; i <= log2_length; i++)
   {
-    from = i % 2 ? intermediate1 : intermediate2,
-    to = !(i % 2) ? intermediate1 : intermediate2;
-    toIndex = 0;
-    power2_i = pow(2, i);
-    half = power2_i / 2;
-    for (j = 0; j < length; j += power2_i)
+    src = i % 2 ? buffer1 : buffer2,
+    target = !(i % 2) ? buffer1 : buffer2;
+    targetIndex = 0;
+    pow2_i = (int)pow(2, (double)i);
+    half = pow2_i / 2;
+    for (j = 0; j < length; j += pow2_i)
     {
-      left = (T *)(from + j);
+      left = (T *)(src + j);
       right = (T *)(left + half);
       leftIndex = rightIndex = 0;
       k = -1;
-      while (++k < power2_i && toIndex < length)
+      while (++k < pow2_i && targetIndex < length)
       {
         if (leftIndex >= half)
-          to[toIndex++] = right[rightIndex++];
+          target[targetIndex++] = right[rightIndex++];
         else if (rightIndex >= half || j + half + rightIndex >= length)
-          to[toIndex++] = left[leftIndex++];
+          target[targetIndex++] = left[leftIndex++];
         else
-          to[toIndex++] = left[leftIndex] < right[rightIndex] ? left[leftIndex++] : right[rightIndex++];
+          target[targetIndex++] = left[leftIndex] < right[rightIndex] ? left[leftIndex++] : right[rightIndex++];
       }
     }
   }
-  result = log2_length % 2 ? intermediate2 : intermediate1;
+  result = log2_length % 2 ? buffer2 : buffer1;
   return result;
 }
