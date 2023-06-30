@@ -10,6 +10,19 @@
 
 #define NUM 127
 
+/**
+  @brief Compares two arrays element by element.
+  This function compares two arrays of type T element by element. It asserts that each element
+  at the corresponding index in arr1 is equal to the element at the same index in arr2.
+  @tparam T The type of the array elements.
+  @param arr1 The first array to compare.
+  @param arr2 The second array to compare.
+  @param length The length of the arrays.
+  @note This function uses the assert() macro to check the equality of elements. If the elements are
+  not equal, it will cause an assertion failure and terminate the program.
+  @note The arrays must have the same length.
+*/
+
 template <typename T>
 void compareArrays(T *arr1, T *arr2, int length)
 {
@@ -17,6 +30,13 @@ void compareArrays(T *arr1, T *arr2, int length)
   for (i = 0; i < length; i++)
     assert(arr1[i] == arr2[i]);
 }
+
+/**
+  @brief Main function to test sorting algorithms.
+  This function tests different sorting algorithms by sorting three different arrays
+  of doubles, integers, and long longs. It compares the results with pre-sorted arrays.
+  @return An integer representing the exit status of the program.
+*/
 
 int main()
 {
