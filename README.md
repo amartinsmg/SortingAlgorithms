@@ -35,7 +35,7 @@ make test
 4. Execute the test program:
 
 ```sh
-./build/test
+./debug/test
 ```
 
 ## Usage
