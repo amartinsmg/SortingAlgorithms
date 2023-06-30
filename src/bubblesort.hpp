@@ -1,18 +1,18 @@
 #include <cassert>
 
 template <typename T>
-T *bubblesort(T *values, unsigned length)
+T *bubblesort(T *arr, int length)
 {
   T *result = new T[length],
     tmp;
-  unsigned i, j;
-  bool changes;
+  int i, j;
+  bool hasSwap;
   assert(length > 0);
   for (i = 0; i < length; i++)
-    result[i] = values[i];
+    result[i] = arr[i];
   for (i = 0; i < length; i++)
   {
-    changes = false;
+    hasSwap = false;
     for (j = 1; j < length; j++)
     {
       tmp = result[j];
@@ -20,10 +20,10 @@ T *bubblesort(T *values, unsigned length)
       {
         result[j] = result[j - 1];
         result[j - 1] = tmp;
-        changes = true;
+        hasSwap = true;
       }
     }
-    if (!changes)
+    if (!hasSwap)
       break;
   }
   return result;
