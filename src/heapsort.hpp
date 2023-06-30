@@ -1,16 +1,15 @@
 #include <cassert>
 
 template <typename T>
-T *heapsort(T *values, unsigned length)
+T *heapsort(T *arr, int length)
 {
   T *result = new T[length],
     tmp;
-  unsigned heapLength = length,
-           left, right;
-  int i, j;
+  int i, j, left, right,
+      heapLength = length;
   assert(length > 0);
   for (i = 0; i < length; i++)
-    result[i] = values[i];
+    result[i] = arr[i];
   while (heapLength > 1)
   {
     for (i = heapLength / 2; i >= 0; i--)
