@@ -1,14 +1,14 @@
 #include <cassert>
 
 template <typename T>
-T *selectionsort(T *values, unsigned length)
+T *selectionsort(T *arr, int length)
 {
   T *result = new T[length],
     tmp;
-  unsigned i, j;
+  int i, j;
   assert(length > 0);
   for (i = 0; i < length; i++)
-    result[i] = values[i];
+    result[i] = arr[i];
   for (i = 0; i < length; i++)
   {
     tmp = result[i];
