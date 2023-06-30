@@ -16,25 +16,25 @@ To compile and run the test file, follow these steps:
 
 1. Clone the repository:
 
-```
+```sh
 git clone https://github.com/amartinsmg/SortingAlgorithms.git
 ```
 
 2. Change to the project directory:
 
-```
+```sh
 cd SortingAlgorithms
 ```
 
 3. Build the test executable using the provided Makefile:
 
-```
+```sh
 make test
 ```
 
 4. Execute the test program:
 
-```
+```sh
 ./build/test
 ```
 
