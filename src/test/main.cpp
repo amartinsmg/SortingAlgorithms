@@ -11,9 +11,9 @@
 #define NUM 127
 
 template <typename T>
-void compareArrays(T *arr1, T *arr2, unsigned length)
+void compareArrays(T *arr1, T *arr2, int length)
 {
-  unsigned i;
+  int i;
   for (i = 0; i < length; i++)
     assert(arr1[i] == arr2[i]);
 }
