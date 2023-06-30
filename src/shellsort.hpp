@@ -2,22 +2,22 @@
 #include <cmath>
 
 template <typename T>
-T *shellsort(T *values, unsigned length)
+T *shellsort(T *arr, int length)
 {
   T *result = new T[length],
     tmp;
-  int i, j, k, l, log2_length, power2_i;
+  int i, j, k, l, log2_length, pow2_i;
   assert(length > 0);
   log2_length = ceil(log2(length));
   for (i = 0; i < length; i++)
-    result[i] = values[i];
+    result[i] = arr[i];
   for (i = 1; i <= log2_length; i++)
   {
-    power2_i = pow(2, i);
-    for (j = 0; j < length; j += power2_i)
+    pow2_i = pow(2, i);
+    for (j = 0; j < length; j += pow2_i)
     {
       k = 0;
-      while (++k < power2_i && j + k < length)
+      while (++k < pow2_i && j + k < length)
       {
         l = j + k;
         tmp = result[l];
