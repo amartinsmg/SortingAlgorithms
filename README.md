@@ -14,10 +14,29 @@ This project provides C implementations of various sorting algorithms. The imple
 
 To compile and run the test file, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/amartinsmg/SortingAlgorithms.git`
-2. Change to the project directory: `cd SortingAlgorithms`
-3. Build the test executable using the provided Makefile: `make test`
-4. Execute the test program: `./build/test`
+1. Clone the repository:
+
+```
+git clone https://github.com/amartinsmg/SortingAlgorithms.git
+```
+
+2. Change to the project directory:
+
+```
+cd SortingAlgorithms
+```
+
+3. Build the test executable using the provided Makefile:
+
+```
+make test
+```
+
+4. Execute the test program:
+
+```
+./build/test
+```
 
 ## Usage
 
