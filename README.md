@@ -1,6 +1,6 @@
 # Sorting Algorithms
 
-This project provides C implementations of various sorting algorithms. The implemented algorithms include:
+This project provides C++ implementations of various sorting algorithms. The implemented algorithms include:
 
 - Bubble Sort
 - Heap Sort
