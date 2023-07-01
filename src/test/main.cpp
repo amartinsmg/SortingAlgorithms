@@ -33,8 +33,9 @@ void compareArrays(T *arr1, T *arr2, int length)
 
 /**
   @brief Main function to test sorting algorithms.
-  This function tests different sorting algorithms by sorting three different arrays
-  of doubles, integers, and long longs. It compares the results with pre-sorted arrays.
+  This function tests different sorting algorithms by sorting three distinct arrays: one containing
+  doubles,another containing integers, and a third containing long longs. It compares the results
+  with pre-sorted arrays.
   @return An integer representing the exit status of the program.
 */
 
