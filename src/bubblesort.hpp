@@ -1,5 +1,7 @@
 #include <cassert>
 
+#ifndef BUBBLE_SORT_HPP
+#define BUBBLE_SORT_HPP
 
 /**
   @brief Sorts an array in ascending order using the bubble sort algorithm.
@@ -39,3 +41,5 @@ T *bubblesort(T *arr, int length)
   }
   return result;
 }
+
+#endif /* BUBBLE_SORT_HPP */
