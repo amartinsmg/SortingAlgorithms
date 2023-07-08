@@ -1,5 +1,8 @@
 #include <cassert>
 
+#ifndef INSERTION_SORT_HPP
+#define INSERTION_SORT_HPP
+
 /**
   @brief Sorts an array in ascending order using the inserion sort algorithm.
   @tparam T The type of the array elements.
@@ -30,3 +33,5 @@ T *insertionsort(T *arr, int length)
   }
   return result;
 }
+
+#endif /* INSERTION_SORT_HPP */
