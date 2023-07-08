@@ -1,6 +1,9 @@
 #include <cassert>
 #include <cmath>
 
+#ifndef MERGE_SORT_HPP
+#define MERGE_SORT_HPP
+
 /**
   @brief Sorts an array in ascending order using the merge sort algorithm.
   @tparam T The type of the array elements.
@@ -49,3 +52,5 @@ T *mergesort(T *arr, int length)
   result = log2_length % 2 ? buffer2 : buffer1;
   return result;
 }
+
+#endif /* MERGE_SORT_HPP */
