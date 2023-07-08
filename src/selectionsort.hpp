@@ -1,5 +1,8 @@
 #include <cassert>
 
+#ifndef SELECTION_SORT_HPP
+#define SELECTION_SORT_HPP
+
 /**
   @brief Sorts an array in ascending order using the selection sort algorithm.
   @tparam T The type of the array elements.
@@ -35,3 +38,5 @@ T *selectionsort(T *arr, int length)
   }
   return result;
 }
+
+#endif /* SELECTION_SORT_HPP */
