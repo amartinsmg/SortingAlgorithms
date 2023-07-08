@@ -1,5 +1,8 @@
 #include <cassert>
 
+#ifndef HEAP_SORT_HPP
+#define HEAP_SORT_HPP
+
 /**
   @brief Sorts an array in ascending order using the heap sort algorithm.
   @tparam T The type of the array elements.
@@ -48,3 +51,5 @@ T *heapsort(T *arr, int length)
   }
   return result;
 }
+
+#endif /* HEAP_SORT_HPP */
