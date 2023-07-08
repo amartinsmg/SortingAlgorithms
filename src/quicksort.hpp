@@ -1,6 +1,9 @@
 #include <cassert>
 #include <cstdlib>
 
+#ifndef QUICK_SORT_HPP
+#define QUICK_SORT_HPP
+
 /**
   @brief Sorts an array in ascending order using the quick sort algorithm.
   @tparam T The type of the array elements.
@@ -64,3 +67,5 @@ T *quicksort(T *arr, int length)
 
   return result;
 }
+
+#endif /* QUICK_SORT_HPP */
