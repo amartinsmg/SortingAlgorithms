@@ -1,6 +1,9 @@
 #include <cassert>
 #include <cmath>
 
+#ifndef SHELL_SORT_HPP
+#define SHELL_SORT_HPP
+
 /**
   @brief Sorts an array in ascending order using the shell sort algorithm.
   @tparam T The type of the array elements.
@@ -41,3 +44,5 @@ T *shellsort(T *arr, int length)
   }
   return result;
 }
+
+#endif /* SHELL_SORT_HPP */
