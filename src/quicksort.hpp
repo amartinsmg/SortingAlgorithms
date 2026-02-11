@@ -64,6 +64,7 @@ T *quicksort(T *arr, int length)
       rangeIndexes[j][1] = high;
     }
   }
+  free(rangeIndexes);
 
   return result;
 }
