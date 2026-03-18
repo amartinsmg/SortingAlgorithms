@@ -2,14 +2,14 @@
 #define INSERTION_SORT_HPP
 
 /**
-  @brief Sorts an array in ascending order using the inserion sort algorithm.
-  @tparam T The type of the array elements.
-  @param arr The input array to be sorted.
-  @param length The length of the array.
-  @return A new array containing the sorted elements.
-  @note The input array remains unchanged.
-  @note The caller is responsible for freeing the memory allocated for the returned array.
-*/
+ * @brief Sorts an array in ascending order using the inserion sort algorithm.
+ * @tparam T The type of the array elements.
+ * @param arr The input array to be sorted.
+ * @param length The length of the array.
+ * @return A new array containing the sorted elements.
+ * @note The input array remains unchanged.
+ * @note The caller is responsible for freeing the memory allocated for the returned array.
+ */
 
 template <typename T>
 T *insertionsort(T *arr, int length)
