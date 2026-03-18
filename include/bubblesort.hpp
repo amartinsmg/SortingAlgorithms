@@ -14,7 +14,7 @@
 template <typename T>
 static T *bubblesort(T *arr, int length)
 {
-  if (length <= 0)
+  if (length <= 0 || arr == nullptr)
     return nullptr;
   T tmp,
       *result = new T[length];

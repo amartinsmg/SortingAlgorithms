@@ -14,7 +14,7 @@
 template <typename T>
 static T *heapsort(T *arr, int length)
 {
-  if (length <= 0)
+  if (length <= 0 || arr == nullptr)
     return nullptr;
 
   T tmp,
