@@ -14,7 +14,7 @@
  */
 
 template <typename T>
-T *mergesort(T *arr, int length)
+static T *mergesort(T *arr, int length)
 {
   if (length <= 0)
     return nullptr;

@@ -12,7 +12,7 @@
  */
 
 template <typename T>
-T *insertionsort(T *arr, int length)
+static T *insertionsort(T *arr, int length)
 {
   if (length <= 0)
     return nullptr;

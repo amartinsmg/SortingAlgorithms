@@ -12,7 +12,7 @@
  */
 
 template <typename T>
-T *heapsort(T *arr, int length)
+static T *heapsort(T *arr, int length)
 {
   if (length <= 0)
     return nullptr;

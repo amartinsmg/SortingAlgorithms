@@ -14,7 +14,7 @@
  */
 
 template <typename T>
-T *shellsort(T *arr, int length)
+static T *shellsort(T *arr, int length)
 {
   if (length <= 0)
     return nullptr;

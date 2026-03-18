@@ -14,7 +14,7 @@
  */
 
 template <typename T>
-T *quicksort(T *arr, int length)
+static T *quicksort(T *arr, int length)
 {
   if (length <= 0)
     return nullptr;
