@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cassert>
 #include <bubblesort.hpp>
 #include <heapsort.hpp>
 #include <insertionsort.hpp>
@@ -8,20 +7,49 @@
 #include <selectionsort.hpp>
 #include <shellsort.hpp>
 #include "include/array_cmp.hpp"
-#include "include/test.hpp"
 
 #define SIZE 127
 
 /**
-  @brief Main function to test sorting algorithms.
-  This function tests different sorting algorithms by sorting three distinct arrays: one containing
-  doubles,another containing integers, and a third containing long longs. It compares the results
-  with pre-sorted arrays.
-  @return An integer representing the exit status of the program.
-*/
-
-int main()
+ * @brief Performs a test case comparing a sorted array with a reference array.
+ * This function compares the elements of the tested array against a reference array.
+ * It prints the test result to standard output and throws an exception if the test fails.
+ * The function takes ownership of the tested array (`arr2`) and frees its memory.
+ * @tparam T The type of the array elements.
+ * @param code The unique identifier for the test case.
+ * @param arr1 The reference array containing the expected sorted elements.
+ * @param arr2 The array to be verified. This array is deleted by the function.
+ * @param length The number of elements in the arrays.
+ */
+template <typename T>
+void test(int code, T *arr1, T *arr2, int length)
 {
+  bool condition = arrayCmp(arr1, arr2, length);
+
+  delete[] arr2;
+  arr2 = nullptr;
+
+  std::cout << "Test #" << code << ": ";
+  if (condition)
+    std::cout << "Passed!" << std::endl;
+  else
+  {
+    std::cout << "Failed!" << std::endl;
+    throw std::invalid_argument("The arrays are not equal!");
+  }
+}
+
+/**
+ * @brief Main function to test sorting algorithms.
+ * This function tests different sorting algorithms by sorting three distinct arrays: one containing
+ * doubles,another containing integers, and a third containing long longs. It compares the results
+ * with pre-sorted arrays.
+ * @return An integer representing the exit status of the program.
+ */
+
+int main(void)
+{
+  int status = EXIT_FAILURE;
   double arr1[SIZE] = {71.57, 31.01, 92.51, 92.7, 43.56, 71.22, 16.32, 97.84,
                        83.77, 35.27, 74.38, 25.75, 27.79, 51.79, 47.78, 97.9,
                        70.14, 76.39, 26.35, 91.8, 19.94, 94.77, 20.75, 78.2,
@@ -110,35 +138,44 @@ int main()
                                 8281, 8649, 8836, 8836, 9025, 9025, 9216, 9216,
                                 9216, 9604, 10000, 10000};
 
-  test(1, arrayCmp<double>(sortedArr1, bubblesort<double>(arr1, SIZE), SIZE));
-  test(2, arrayCmp<int>(sortedArr2, bubblesort<int>(arr2, SIZE), SIZE));
-  test(3, arrayCmp<long long>(sortedArr3, bubblesort<long long>(arr3, SIZE), SIZE));
+  try
+  {
+    test<double>(1, sortedArr1, bubblesort<double>(arr1, SIZE), SIZE);
+    test<int>(2, sortedArr2, bubblesort<int>(arr2, SIZE), SIZE);
+    test<long long>(3, sortedArr3, bubblesort<long long>(arr3, SIZE), SIZE);
 
-  test(4, arrayCmp<double>(sortedArr1, insertionsort<double>(arr1, SIZE), SIZE));
-  test(5, arrayCmp<int>(sortedArr2, insertionsort<int>(arr2, SIZE), SIZE));
-  test(6, arrayCmp<long long>(sortedArr3, insertionsort<long long>(arr3, SIZE), SIZE));
+    test<double>(4, sortedArr1, insertionsort<double>(arr1, SIZE), SIZE);
+    test<int>(5, sortedArr2, insertionsort<int>(arr2, SIZE), SIZE);
+    test<long long>(6, sortedArr3, insertionsort<long long>(arr3, SIZE), SIZE);
 
-  test(7, arrayCmp<double>(sortedArr1, selectionsort<double>(arr1, SIZE), SIZE));
-  test(8, arrayCmp<int>(sortedArr2, selectionsort<int>(arr2, SIZE), SIZE));
-  test(9, arrayCmp<long long>(sortedArr3, selectionsort<long long>(arr3, SIZE), SIZE));
+    test<double>(7, sortedArr1, selectionsort<double>(arr1, SIZE), SIZE);
+    test<int>(8, sortedArr2, selectionsort<int>(arr2, SIZE), SIZE);
+    test<long long>(9, sortedArr3, selectionsort<long long>(arr3, SIZE), SIZE);
 
-  test(10, arrayCmp<double>(sortedArr1, mergesort<double>(arr1, SIZE), SIZE));
-  test(11, arrayCmp<int>(sortedArr2, mergesort<int>(arr2, SIZE), SIZE));
-  test(12, arrayCmp<long long>(sortedArr3, mergesort<long long>(arr3, SIZE), SIZE));
+    test<double>(10, sortedArr1, mergesort<double>(arr1, SIZE), SIZE);
+    test<int>(11, sortedArr2, mergesort<int>(arr2, SIZE), SIZE);
+    test<long long>(12, sortedArr3, mergesort<long long>(arr3, SIZE), SIZE);
 
-  test(13, arrayCmp<double>(sortedArr1, quicksort<double>(arr1, SIZE), SIZE));
-  test(14, arrayCmp<int>(sortedArr2, quicksort<int>(arr2, SIZE), SIZE));
-  test(15, arrayCmp<long long>(sortedArr3, quicksort<long long>(arr3, SIZE), SIZE));
+    test<double>(13, sortedArr1, quicksort<double>(arr1, SIZE), SIZE);
+    test<int>(14, sortedArr2, quicksort<int>(arr2, SIZE), SIZE);
+    test<long long>(15, sortedArr3, quicksort<long long>(arr3, SIZE), SIZE);
 
-  test(16, arrayCmp<double>(sortedArr1, heapsort<double>(arr1, SIZE), SIZE));
-  test(17, arrayCmp<int>(sortedArr2, heapsort<int>(arr2, SIZE), SIZE));
-  test(18, arrayCmp<long long>(sortedArr3, heapsort<long long>(arr3, SIZE), SIZE));
+    test<double>(16, sortedArr1, heapsort<double>(arr1, SIZE), SIZE);
+    test<int>(17, sortedArr2, heapsort<int>(arr2, SIZE), SIZE);
+    test<long long>(18, sortedArr3, heapsort<long long>(arr3, SIZE), SIZE);
 
-  test(19, arrayCmp<double>(sortedArr1, shellsort<double>(arr1, SIZE), SIZE));
-  test(20, arrayCmp<int>(sortedArr2, shellsort<int>(arr2, SIZE), SIZE));
-  test(21, arrayCmp<long long>(sortedArr3, shellsort<long long>(arr3, SIZE), SIZE));
+    test<double>(19, sortedArr1, shellsort<double>(arr1, SIZE), SIZE);
+    test<int>(20, sortedArr2, shellsort<int>(arr2, SIZE), SIZE);
+    test<long long>(21, sortedArr3, shellsort<long long>(arr3, SIZE), SIZE);
 
-  std::cout << "Passed all tests successfully!\n";
+    std::cout << "Passed all tests successfully!\n";
 
-  return 0;
+    status = EXIT_SUCCESS;
+  }
+  catch (const std::exception &e)
+  {
+    std::cerr << e.what() << '\n';
+  }
+
+  return status;
 }
