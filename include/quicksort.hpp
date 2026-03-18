@@ -3,6 +3,33 @@
 
 #include <cstdlib>
 
+template <typename T>
+static void quicksort_pipeline(T *arr, int left, int right)
+{
+  if (left >= right)
+    return;
+  int i, j;
+  i = left;
+  T tmp,
+      pivot = arr[right];
+
+  for (j = i; j <= right; j++)
+  {
+    if (arr[j] < pivot)
+    {
+      tmp = arr[i];
+      arr[i++] = arr[j];
+      arr[j] = tmp;
+    }
+  }
+  arr[right] = arr[i];
+  arr[i] = pivot;
+  if (i != left)
+    quicksort_pipeline(arr, left, i - 1);
+  if (i != right)
+    quicksort_pipeline(arr, i + 1, right);
+}
+
 /**
  * @brief Sorts an array in ascending order using the quick sort algorithm.
  * @tparam T The type of the array elements.
@@ -16,58 +43,16 @@
 template <typename T>
 static T *quicksort(T *arr, int length)
 {
-  if (length <= 0)
+  if (length <= 0 || arr == nullptr)
     return nullptr;
 
-  T *result = new T[length],
-    pivot, tmp;
-  int i, j, k, low, high,
-      **rangeIndexes = (int **)malloc(sizeof(*rangeIndexes)),
-      rangeIndexesLength = 1;
-  rangeIndexes[0] = (int *)malloc(sizeof(**rangeIndexes) * 2);
-  rangeIndexes[0][0] = 0;
-  rangeIndexes[0][1] = length - 1;
+  T *result = new T[length];
+  int i;
 
   for (i = 0; i < length; i++)
     result[i] = arr[i];
 
-  for (i = 0; i < rangeIndexesLength; i++)
-  {
-    k = low = rangeIndexes[i][0];
-    high = rangeIndexes[i][1];
-    free(rangeIndexes[i]);
-    if (low == high)
-      continue;
-    pivot = result[high];
-    for (j = k; j < high; j++)
-    {
-      if (result[j] < pivot)
-      {
-        tmp = result[k];
-        result[k++] = result[j];
-        result[j] = tmp;
-      }
-    }
-    result[high] = result[k];
-    result[k] = pivot;
-    if (k != low)
-    {
-      j = rangeIndexesLength;
-      rangeIndexes = (int **)realloc(rangeIndexes, sizeof(*rangeIndexes) * ++rangeIndexesLength);
-      rangeIndexes[j] = (int *)malloc(sizeof(**rangeIndexes) * 2);
-      rangeIndexes[j][0] = low;
-      rangeIndexes[j][1] = k - 1;
-    }
-    if (k != high)
-    {
-      j = rangeIndexesLength;
-      rangeIndexes = (int **)realloc(rangeIndexes, sizeof(*rangeIndexes) * ++rangeIndexesLength);
-      rangeIndexes[j] = (int *)malloc(sizeof(**rangeIndexes) * 2);
-      rangeIndexes[j][0] = k + 1;
-      rangeIndexes[j][1] = high;
-    }
-  }
-  free(rangeIndexes);
+  quicksort_pipeline(result, 0, length - 1);
 
   return result;
 }
