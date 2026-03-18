@@ -1,8 +1,7 @@
-#include <cassert>
-#include <cstdlib>
-
 #ifndef QUICK_SORT_HPP
 #define QUICK_SORT_HPP
+
+#include <cstdlib>
 
 /**
   @brief Sorts an array in ascending order using the quick sort algorithm.
@@ -17,6 +16,9 @@
 template <typename T>
 T *quicksort(T *arr, int length)
 {
+  if (length <= 0)
+    return nullptr;
+
   T *result = new T[length],
     pivot, tmp;
   int i, j, k, low, high,
@@ -25,9 +27,10 @@ T *quicksort(T *arr, int length)
   rangeIndexes[0] = (int *)malloc(sizeof(**rangeIndexes) * 2);
   rangeIndexes[0][0] = 0;
   rangeIndexes[0][1] = length - 1;
-  assert(length > 0);
+
   for (i = 0; i < length; i++)
     result[i] = arr[i];
+
   for (i = 0; i < rangeIndexesLength; i++)
   {
     k = low = rangeIndexes[i][0];

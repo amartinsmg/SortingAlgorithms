@@ -1,5 +1,3 @@
-#include <cassert>
-
 #ifndef HEAP_SORT_HPP
 #define HEAP_SORT_HPP
 
@@ -16,13 +14,17 @@
 template <typename T>
 T *heapsort(T *arr, int length)
 {
-  T *result = new T[length],
-    tmp;
+  if (length <= 0)
+    return nullptr;
+
+  T tmp,
+      *result = new T[length];
   int i, j, left, right,
       heapLength = length;
-  assert(length > 0);
+
   for (i = 0; i < length; i++)
     result[i] = arr[i];
+
   while (heapLength > 1)
   {
     for (i = heapLength / 2; i >= 0; i--)
@@ -45,10 +47,12 @@ T *heapsort(T *arr, int length)
         }
       }
     }
+
     tmp = result[--heapLength];
     result[heapLength] = result[0];
     result[0] = tmp;
   }
+
   return result;
 }
 

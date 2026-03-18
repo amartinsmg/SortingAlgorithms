@@ -1,5 +1,3 @@
-#include <cassert>
-
 #ifndef SELECTION_SORT_HPP
 #define SELECTION_SORT_HPP
 
@@ -16,12 +14,16 @@
 template <typename T>
 T *selectionsort(T *arr, int length)
 {
+  if (length <= 0)
+    return nullptr;
+
   T *result = new T[length],
     tmp;
   int i, j;
-  assert(length > 0);
+
   for (i = 0; i < length; i++)
     result[i] = arr[i];
+
   for (i = 0; i < length; i++)
   {
     tmp = result[i];
@@ -36,6 +38,7 @@ T *selectionsort(T *arr, int length)
       }
     }
   }
+
   return result;
 }
 

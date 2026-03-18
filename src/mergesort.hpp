@@ -1,8 +1,7 @@
-#include <cassert>
-#include <cmath>
-
 #ifndef MERGE_SORT_HPP
 #define MERGE_SORT_HPP
+
+#include <cmath>
 
 /**
   @brief Sorts an array in ascending order using the merge sort algorithm.
@@ -17,14 +16,19 @@
 template <typename T>
 T *mergesort(T *arr, int length)
 {
-  T *buffer1 = new T[length],
-    *buffer2 = new T[length],
-    *src, *target, *left, *right, *result;
-  int i, j, k, half, targetIndex, leftIndex, rightIndex, log2_length, pow2_i;
-  assert(length > 0);
+  if (length <= 0)
+    return nullptr;
+
+  T *src, *target, *left, *right, *result,
+      *buffer1 = new T[length],
+      *buffer2 = new T[length];
+  int i, j, k, half, targetIndex, leftIndex,
+      rightIndex, log2_length, pow2_i;
   log2_length = (int)ceil(log2((double)length));
+
   for (i = 0; i < length; i++)
     buffer1[i] = arr[i];
+
   for (i = 1; i <= log2_length; i++)
   {
     src = i % 2 ? buffer1 : buffer2,
@@ -49,7 +53,20 @@ T *mergesort(T *arr, int length)
       }
     }
   }
-  result = log2_length % 2 ? buffer2 : buffer1;
+
+  if (log2_length % 2)
+  {
+    result = buffer2;
+    delete[] buffer1;
+    buffer1 = nullptr;
+  }
+  else
+  {
+    result = buffer1;
+    delete[] buffer2;
+    buffer2 = nullptr;
+  }
+
   return result;
 }
 

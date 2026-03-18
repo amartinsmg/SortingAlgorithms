@@ -1,5 +1,3 @@
-#include <cassert>
-
 #ifndef BUBBLE_SORT_HPP
 #define BUBBLE_SORT_HPP
 
@@ -16,13 +14,16 @@
 template <typename T>
 T *bubblesort(T *arr, int length)
 {
-  T *result = new T[length],
-    tmp;
+  if (length <= 0)
+    return nullptr;
+  T tmp,
+      *result = new T[length];
   int i, j;
   bool hasSwap;
-  assert(length > 0);
+
   for (i = 0; i < length; i++)
     result[i] = arr[i];
+
   for (i = 0; i < length; i++)
   {
     hasSwap = false;
@@ -36,6 +37,7 @@ T *bubblesort(T *arr, int length)
         hasSwap = true;
       }
     }
+
     if (!hasSwap)
       break;
   }

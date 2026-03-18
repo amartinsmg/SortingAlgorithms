@@ -1,8 +1,7 @@
-#include <cassert>
-#include <cmath>
-
 #ifndef SHELL_SORT_HPP
 #define SHELL_SORT_HPP
+
+#include <cmath>
 
 /**
   @brief Sorts an array in ascending order using the shell sort algorithm.
@@ -17,13 +16,17 @@
 template <typename T>
 T *shellsort(T *arr, int length)
 {
+  if (length <= 0)
+    return nullptr;
+
   T *result = new T[length],
     tmp;
   int i, j, k, l, log2_length, pow2_i;
-  assert(length > 0);
   log2_length = ceil(log2(length));
+
   for (i = 0; i < length; i++)
     result[i] = arr[i];
+
   for (i = 1; i <= log2_length; i++)
   {
     pow2_i = pow(2, i);
@@ -42,6 +45,7 @@ T *shellsort(T *arr, int length)
       }
     }
   }
+
   return result;
 }
 
