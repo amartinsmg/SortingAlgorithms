@@ -1,45 +1,49 @@
 #ifndef SELECTION_SORT_HPP
 #define SELECTION_SORT_HPP
 
-/**
- * @brief Sorts an array in ascending order using the selection sort algorithm.
- * @tparam T The type of the array elements.
- * @param arr The input array to be sorted.
- * @param length The length of the array.
- * @return A new array containing the sorted elements.
- * @note The input array remains unchanged.
- * @note The caller is responsible for freeing the memory allocated for the returned array.
- */
-
-template <typename T>
-static T *selectionsort(T *arr, int length)
+namespace Sort
 {
-  if (length <= 0 || arr == nullptr)
-    return nullptr;
+  /**
+   * @brief Sorts an array in ascending order using the selection sort algorithm.
+   * @tparam T The type of the array elements.
+   * @param arr The input array to be sorted.
+   * @param length The length of the array.
+   * @return A new array containing the sorted elements.
+   * @note The input array remains unchanged.
+   * @note The caller is responsible for freeing the memory allocated for the returned array.
+   */
 
-  T *result = new T[length],
-    tmp;
-  int i, j;
-
-  for (i = 0; i < length; i++)
-    result[i] = arr[i];
-
-  for (i = 0; i < length; i++)
+  template <typename T>
+  static T *selectionsort(T *arr, int length)
   {
-    tmp = result[i];
-    j = i;
-    while (++j < length)
+    if (length <= 0 || arr == nullptr)
+      return nullptr;
+
+    T *result = new T[length],
+      tmp;
+    int i, j;
+
+    for (i = 0; i < length; i++)
+      result[i] = arr[i];
+
+    for (i = 0; i < length; i++)
     {
-      if (result[j] < tmp)
+      tmp = result[i];
+      j = i;
+      while (++j < length)
       {
-        result[i] = result[j];
-        result[j] = tmp;
-        tmp = result[i];
+        if (result[j] < tmp)
+        {
+          result[i] = result[j];
+          result[j] = tmp;
+          tmp = result[i];
+        }
       }
     }
+
+    return result;
   }
 
-  return result;
-}
+} // Sort
 
 #endif /* SELECTION_SORT_HPP */

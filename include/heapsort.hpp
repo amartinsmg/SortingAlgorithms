@@ -1,59 +1,63 @@
 #ifndef HEAP_SORT_HPP
 #define HEAP_SORT_HPP
 
-/**
- * @brief Sorts an array in ascending order using the heap sort algorithm.
- * @tparam T The type of the array elements.
- * @param arr The input array to be sorted.
- * @param length The length of the array.
- * @return A new array containing the sorted elements.
- * @note The input array remains unchanged.
- * @note The caller is responsible for freeing the memory allocated for the returned array.
- */
-
-template <typename T>
-static T *heapsort(T *arr, int length)
+namespace Sort
 {
-  if (length <= 0 || arr == nullptr)
-    return nullptr;
+  /**
+   * @brief Sorts an array in ascending order using the heap sort algorithm.
+   * @tparam T The type of the array elements.
+   * @param arr The input array to be sorted.
+   * @param length The length of the array.
+   * @return A new array containing the sorted elements.
+   * @note The input array remains unchanged.
+   * @note The caller is responsible for freeing the memory allocated for the returned array.
+   */
 
-  T tmp,
-      *result = new T[length];
-  int i, j, left, right,
-      heapLength = length;
-
-  for (i = 0; i < length; i++)
-    result[i] = arr[i];
-
-  while (heapLength > 1)
+  template <typename T>
+  static T *heapsort(T *arr, int length)
   {
-    for (i = heapLength / 2; i >= 0; i--)
+    if (length <= 0 || arr == nullptr)
+      return nullptr;
+
+    T tmp,
+        *result = new T[length];
+    int i, j, left, right,
+        heapLength = length;
+
+    for (i = 0; i < length; i++)
+      result[i] = arr[i];
+
+    while (heapLength > 1)
     {
-      for (j = i; j < heapLength / 2; j++)
+      for (i = heapLength / 2; i >= 0; i--)
       {
-        left = 2 * j + 1;
-        right = left + 1;
-        if (left < heapLength && result[j] < result[left])
+        for (j = i; j < heapLength / 2; j++)
         {
-          tmp = result[j];
-          result[j] = result[left];
-          result[left] = tmp;
-        }
-        if (right < heapLength && result[j] < result[right])
-        {
-          tmp = result[j];
-          result[j] = result[right];
-          result[right] = tmp;
+          left = 2 * j + 1;
+          right = left + 1;
+          if (left < heapLength && result[j] < result[left])
+          {
+            tmp = result[j];
+            result[j] = result[left];
+            result[left] = tmp;
+          }
+          if (right < heapLength && result[j] < result[right])
+          {
+            tmp = result[j];
+            result[j] = result[right];
+            result[right] = tmp;
+          }
         }
       }
+
+      tmp = result[--heapLength];
+      result[heapLength] = result[0];
+      result[0] = tmp;
     }
 
-    tmp = result[--heapLength];
-    result[heapLength] = result[0];
-    result[0] = tmp;
+    return result;
   }
 
-  return result;
-}
+} // Sort
 
 #endif /* HEAP_SORT_HPP */

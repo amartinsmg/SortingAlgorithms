@@ -3,50 +3,54 @@
 
 #include <cmath>
 
-/**
- *  @brief Sorts an array in ascending order using the shell sort algorithm.
- *  @tparam T The type of the array elements.
- *  @param arr The input array to be sorted.
- *  @param length The length of the array.
- *  @return A new array containing the sorted elements.
- *  @note The input array remains unchanged.
- *  @note The caller is responsible for freeing the memory allocated for the returned array.
- */
-
-template <typename T>
-static T *shellsort(T *arr, int length)
+namespace Sort
 {
-  if (length <= 0 || arr == nullptr)
-    return nullptr;
+  /**
+   *  @brief Sorts an array in ascending order using the shell sort algorithm.
+   *  @tparam T The type of the array elements.
+   *  @param arr The input array to be sorted.
+   *  @param length The length of the array.
+   *  @return A new array containing the sorted elements.
+   *  @note The input array remains unchanged.
+   *  @note The caller is responsible for freeing the memory allocated for the returned array.
+   */
 
-  T *result = new T[length],
-    tmp;
-  int i, j, k, l, log2_length, pow2_i;
-  log2_length = ceil(log2(length));
-
-  for (i = 0; i < length; i++)
-    result[i] = arr[i];
-
-  for (i = 1; i <= log2_length; i++)
+  template <typename T>
+  static T *shellsort(T *arr, int length)
   {
-    pow2_i = pow(2, i);
-    for (j = 0; j < length; j += pow2_i)
+    if (length <= 0 || arr == nullptr)
+      return nullptr;
+
+    T *result = new T[length],
+      tmp;
+    int i, j, k, l, log2_length, pow2_i;
+    log2_length = ceil(log2(length));
+
+    for (i = 0; i < length; i++)
+      result[i] = arr[i];
+
+    for (i = 1; i <= log2_length; i++)
     {
-      k = 0;
-      while (++k < pow2_i && j + k < length)
+      pow2_i = pow(2, i);
+      for (j = 0; j < length; j += pow2_i)
       {
-        l = j + k;
-        tmp = result[l];
-        while (--l >= j && tmp < result[l])
+        k = 0;
+        while (++k < pow2_i && j + k < length)
         {
-          result[l + 1] = result[l];
-          result[l] = tmp;
+          l = j + k;
+          tmp = result[l];
+          while (--l >= j && tmp < result[l])
+          {
+            result[l + 1] = result[l];
+            result[l] = tmp;
+          }
         }
       }
     }
+
+    return result;
   }
 
-  return result;
-}
+} // Sort
 
 #endif /* SHELL_SORT_HPP */
