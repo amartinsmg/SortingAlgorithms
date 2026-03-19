@@ -16,7 +16,7 @@ namespace Sort
    */
 
   template <typename T>
-  static T *shellsort(T *arr, int length)
+  static inline T *shellsort(T *arr, int length)
   {
     if (length <= 0 || arr == nullptr)
       return nullptr;

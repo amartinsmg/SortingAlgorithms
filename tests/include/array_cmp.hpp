@@ -13,7 +13,7 @@
 */
 
 template <typename T>
-bool arrayCmp(T *arr1, T *arr2, int length)
+static inline bool arrayCmp(T *arr1, T *arr2, int length)
 {
   int i;
   for (i = 0; arr1[i] == arr2[i]; i++)

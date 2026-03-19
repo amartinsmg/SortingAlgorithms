@@ -14,7 +14,7 @@ namespace Sort
    */
 
   template <typename T>
-  static T *bubblesort(T *arr, int length)
+  static inline T *bubblesort(T *arr, int length)
   {
     if (length <= 0 || arr == nullptr)
       return nullptr;

@@ -49,7 +49,7 @@ namespace Sort
    */
 
   template <typename T>
-  static T *quicksort(T *arr, int length)
+  static inline T *quicksort(T *arr, int length)
   {
     if (length <= 0 || arr == nullptr)
       return nullptr;
