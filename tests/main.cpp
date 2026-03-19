@@ -1,11 +1,5 @@
 #include <iostream>
-#include <bubblesort.hpp>
-#include <heapsort.hpp>
-#include <insertionsort.hpp>
-#include <mergesort.hpp>
-#include <quicksort.hpp>
-#include <selectionsort.hpp>
-#include <shellsort.hpp>
+#include <sort.hpp>
 #include "include/array_cmp.hpp"
 
 #define SIZE 127
@@ -140,33 +134,33 @@ int main(void)
 
   try
   {
-    test<double>(1, sortedArr1, bubblesort<double>(arr1, SIZE), SIZE);
-    test<int>(2, sortedArr2, bubblesort<int>(arr2, SIZE), SIZE);
-    test<long long>(3, sortedArr3, bubblesort<long long>(arr3, SIZE), SIZE);
+    test<double>(1, sortedArr1, Sort::bubblesort<double>(arr1, SIZE), SIZE);
+    test<int>(2, sortedArr2, Sort::bubblesort<int>(arr2, SIZE), SIZE);
+    test<long long>(3, sortedArr3, Sort::bubblesort<long long>(arr3, SIZE), SIZE);
 
-    test<double>(4, sortedArr1, insertionsort<double>(arr1, SIZE), SIZE);
-    test<int>(5, sortedArr2, insertionsort<int>(arr2, SIZE), SIZE);
-    test<long long>(6, sortedArr3, insertionsort<long long>(arr3, SIZE), SIZE);
+    test<double>(4, sortedArr1, Sort::insertionsort<double>(arr1, SIZE), SIZE);
+    test<int>(5, sortedArr2, Sort::insertionsort<int>(arr2, SIZE), SIZE);
+    test<long long>(6, sortedArr3, Sort::insertionsort<long long>(arr3, SIZE), SIZE);
 
-    test<double>(7, sortedArr1, selectionsort<double>(arr1, SIZE), SIZE);
-    test<int>(8, sortedArr2, selectionsort<int>(arr2, SIZE), SIZE);
-    test<long long>(9, sortedArr3, selectionsort<long long>(arr3, SIZE), SIZE);
+    test<double>(7, sortedArr1, Sort::selectionsort<double>(arr1, SIZE), SIZE);
+    test<int>(8, sortedArr2, Sort::selectionsort<int>(arr2, SIZE), SIZE);
+    test<long long>(9, sortedArr3, Sort::selectionsort<long long>(arr3, SIZE), SIZE);
 
-    test<double>(10, sortedArr1, mergesort<double>(arr1, SIZE), SIZE);
-    test<int>(11, sortedArr2, mergesort<int>(arr2, SIZE), SIZE);
-    test<long long>(12, sortedArr3, mergesort<long long>(arr3, SIZE), SIZE);
+    test<double>(10, sortedArr1, Sort::mergesort<double>(arr1, SIZE), SIZE);
+    test<int>(11, sortedArr2, Sort::mergesort<int>(arr2, SIZE), SIZE);
+    test<long long>(12, sortedArr3, Sort::mergesort<long long>(arr3, SIZE), SIZE);
 
-    test<double>(13, sortedArr1, quicksort<double>(arr1, SIZE), SIZE);
-    test<int>(14, sortedArr2, quicksort<int>(arr2, SIZE), SIZE);
-    test<long long>(15, sortedArr3, quicksort<long long>(arr3, SIZE), SIZE);
+    test<double>(13, sortedArr1, Sort::quicksort<double>(arr1, SIZE), SIZE);
+    test<int>(14, sortedArr2, Sort::quicksort<int>(arr2, SIZE), SIZE);
+    test<long long>(15, sortedArr3, Sort::quicksort<long long>(arr3, SIZE), SIZE);
 
-    test<double>(16, sortedArr1, heapsort<double>(arr1, SIZE), SIZE);
-    test<int>(17, sortedArr2, heapsort<int>(arr2, SIZE), SIZE);
-    test<long long>(18, sortedArr3, heapsort<long long>(arr3, SIZE), SIZE);
+    test<double>(16, sortedArr1, Sort::heapsort<double>(arr1, SIZE), SIZE);
+    test<int>(17, sortedArr2, Sort::heapsort<int>(arr2, SIZE), SIZE);
+    test<long long>(18, sortedArr3, Sort::heapsort<long long>(arr3, SIZE), SIZE);
 
-    test<double>(19, sortedArr1, shellsort<double>(arr1, SIZE), SIZE);
-    test<int>(20, sortedArr2, shellsort<int>(arr2, SIZE), SIZE);
-    test<long long>(21, sortedArr3, shellsort<long long>(arr3, SIZE), SIZE);
+    test<double>(19, sortedArr1, Sort::shellsort<double>(arr1, SIZE), SIZE);
+    test<int>(20, sortedArr2, Sort::shellsort<int>(arr2, SIZE), SIZE);
+    test<long long>(21, sortedArr3, Sort::shellsort<long long>(arr3, SIZE), SIZE);
 
     std::cout << "Passed all tests successfully!\n";
 
