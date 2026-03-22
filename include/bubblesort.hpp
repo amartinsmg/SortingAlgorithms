@@ -1,51 +1,47 @@
 #ifndef BUBBLE_SORT_HPP
 #define BUBBLE_SORT_HPP
 
-namespace Sort
-{
-  /**
-   * @brief Sorts an array in ascending order using the bubble sort algorithm.
-   * @tparam T The type of the array elements.
-   * @param arr The input array to be sorted.
-   * @param length The length of the array.
-   * @return A new array containing the sorted elements.
-   * @note The input array remains unchanged.
-   * @note The caller is responsible for freeing the memory allocated for the returned array.
-   */
+#include <cstddef>
+#include <vector>
 
-  template <typename T>
-  static inline T *bubblesort(T *arr, int length)
-  {
-    if (length <= 0 || arr == nullptr)
-      return nullptr;
-    T tmp,
-        *result = new T[length];
-    int i, j;
-    bool hasSwap;
+namespace Sort {
+/**
+ * @brief Sorts an array in ascending order using the bubble sort algorithm.
+ * @tparam T The type of the array elements.
+ * @param arr The input array to be sorted.
+ * @return A new array containing the sorted elements.
+ * @note The input array remains unchanged.
+ */
 
-    for (i = 0; i < length; i++)
-      result[i] = arr[i];
-
-    for (i = 0; i < length; i++)
-    {
-      hasSwap = false;
-      for (j = 1; j < length; j++)
-      {
-        tmp = result[j];
-        if (tmp < result[j - 1])
-        {
-          result[j] = result[j - 1];
-          result[j - 1] = tmp;
-          hasSwap = true;
-        }
-      }
-
-      if (!hasSwap)
-        break;
-    }
-    return result;
+template <typename T>
+static inline std::vector<T> bubblesort(const std::vector<T> arr) {
+  if (arr.size() == 0) {
+    std::vector<T> v(0);
+    return v;
   }
 
-} // Sort
+  std::vector<T> result(arr);
+  T tmp;
+  size_t i, j, length = arr.size();
+  bool hasSwap;
+
+  for (i = 0; i < length; i++) {
+    hasSwap = false;
+    for (j = 1; j < length; j++) {
+      tmp = result[j];
+      if (tmp < result[j - 1]) {
+        result[j] = result[j - 1];
+        result[j - 1] = tmp;
+        hasSwap = true;
+      }
+    }
+
+    if (!hasSwap)
+      break;
+  }
+  return result;
+}
+
+} // namespace Sort
 
 #endif /* BUBBLE_SORT_HPP */
