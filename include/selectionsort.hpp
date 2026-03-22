@@ -1,49 +1,44 @@
 #ifndef SELECTION_SORT_HPP
 #define SELECTION_SORT_HPP
 
-namespace Sort
-{
-  /**
-   * @brief Sorts an array in ascending order using the selection sort algorithm.
-   * @tparam T The type of the array elements.
-   * @param arr The input array to be sorted.
-   * @param length The length of the array.
-   * @return A new array containing the sorted elements.
-   * @note The input array remains unchanged.
-   * @note The caller is responsible for freeing the memory allocated for the returned array.
-   */
+#include <cstddef>
+#include <vector>
 
-  template <typename T>
-  static inline T *selectionsort(T *arr, int length)
-  {
-    if (length <= 0 || arr == nullptr)
-      return nullptr;
+namespace Sort {
+/**
+ * @brief Sorts an array in ascending order using the selection sort algorithm.
+ * @tparam T The type of the array elements.
+ * @param arr The input array to be sorted.
+ * @return A new array containing the sorted elements.
+ * @note The input array remains unchanged.
+ */
 
-    T *result = new T[length],
-      tmp;
-    int i, j;
-
-    for (i = 0; i < length; i++)
-      result[i] = arr[i];
-
-    for (i = 0; i < length; i++)
-    {
-      tmp = result[i];
-      j = i;
-      while (++j < length)
-      {
-        if (result[j] < tmp)
-        {
-          result[i] = result[j];
-          result[j] = tmp;
-          tmp = result[i];
-        }
-      }
-    }
-
-    return result;
+template <typename T>
+static inline std::vector<T> selectionsort(const std::vector<T> arr) {
+  if (arr.size() == 0) {
+    std::vector<T> v(0);
+    return v;
   }
 
-} // Sort
+  std::vector<T> result(arr);
+  T tmp;
+  size_t i, j, length = arr.size();
+
+  for (i = 0; i < length; i++) {
+    tmp = result[i];
+
+    for (j = i + 1; j < length; j++) {
+      if (result[j] < tmp) {
+        result[i] = result[j];
+        result[j] = tmp;
+        tmp = result[i];
+      }
+    }
+  }
+
+  return result;
+}
+
+} // namespace Sort
 
 #endif /* SELECTION_SORT_HPP */
