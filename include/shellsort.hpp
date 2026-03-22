@@ -2,55 +2,47 @@
 #define SHELL_SORT_HPP
 
 #include <cmath>
+#include <cstdint>
+#include <vector>
 
-namespace Sort
-{
-  /**
-   *  @brief Sorts an array in ascending order using the shell sort algorithm.
-   *  @tparam T The type of the array elements.
-   *  @param arr The input array to be sorted.
-   *  @param length The length of the array.
-   *  @return A new array containing the sorted elements.
-   *  @note The input array remains unchanged.
-   *  @note The caller is responsible for freeing the memory allocated for the returned array.
-   */
+namespace Sort {
+/**
+ *  @brief Sorts an array in ascending order using the shell sort algorithm.
+ *  @tparam T The type of the array elements.
+ *  @param arr The input array to be sorted.
+ *  @return A new array containing the sorted elements.
+ *  @note The input array remains unchanged.
+ */
 
-  template <typename T>
-  static inline T *shellsort(T *arr, int length)
-  {
-    if (length <= 0 || arr == nullptr)
-      return nullptr;
+template <typename T>
+static inline std::vector<T> shellsort(const std::vector<T> arr) {
+  if (arr.size() == 0) {
+    std::vector<T> v(0);
+    return v;
+  }
 
-    T *result = new T[length],
-      tmp;
-    int i, j, k, l, log2_length, pow2_i;
-    log2_length = ceil(log2(length));
+  std::vector<T> result = arr;
+  T tmp;
+  int64_t i, j, k, l, pow2_i, length = arr.size(),
+                              log2_length = ceil(log2(length));
 
-    for (i = 0; i < length; i++)
-      result[i] = arr[i];
-
-    for (i = 1; i <= log2_length; i++)
-    {
-      pow2_i = pow(2, i);
-      for (j = 0; j < length; j += pow2_i)
-      {
-        k = 0;
-        while (++k < pow2_i && j + k < length)
-        {
-          l = j + k;
-          tmp = result[l];
-          while (--l >= j && tmp < result[l])
-          {
-            result[l + 1] = result[l];
-            result[l] = tmp;
-          }
+  for (i = 1; i <= log2_length; i++) {
+    pow2_i = pow(2, i);
+    for (j = k = 0; j < length; j += pow2_i) {
+      while (++k < pow2_i && j + k < length) {
+        l = j + k;
+        tmp = result[l];
+        while (--l >= j && tmp < result[l]) {
+          result[l + 1] = result[l];
+          result[l] = tmp;
         }
       }
     }
-
-    return result;
   }
 
-} // Sort
+  return result;
+}
+
+} // namespace Sort
 
 #endif /* SHELL_SORT_HPP */
