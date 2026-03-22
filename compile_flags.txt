@@ -1,0 +1,4 @@
+-Iinclude
+-Wall
+-fsanitize=address
+-std=c++17
