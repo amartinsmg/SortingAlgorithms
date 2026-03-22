@@ -28,10 +28,10 @@ static inline std::vector<T> insertionsort(const std::vector<T> arr) {
 
   for (i = 1; i < arr.size(); i++) {
     tmp = result[i];
-    j = i - 1;
-    while (j >= 0 && tmp < result[j]) {
+
+    for (j = i - 1; j >= 0 && tmp < result[j]; j--) {
       result[j + 1] = result[j];
-      result[j--] = tmp;
+      result[j] = tmp;
     }
   }
   return result;
