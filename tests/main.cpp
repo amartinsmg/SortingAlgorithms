@@ -1,19 +1,15 @@
+#include "sort.hpp"
 #include <cstdio>
 #include <cstdlib>
 #include <exception>
 #include <iostream>
 #include <stdexcept>
 #include <vector>
-#include "sort.hpp"
 
 template <typename T> void test(int code, bool condition) {
-  printf("Test #%02d: ", code);
-  if (condition)
-    std::cout << "Passed!" << std::endl;
-  else {
-    std::cout << "Failed!" << std::endl;
+  printf("Test #%02d: %s\n", code, condition ? "Passed!" : "Failed!");
+  if (!condition)
     throw std::invalid_argument("The arrays are not equal!");
-  }
 }
 
 int main(void) {
