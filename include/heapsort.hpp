@@ -15,14 +15,14 @@ namespace Sort {
 
 template <typename T>
 static inline std::vector<T> heapsort(const std::vector<T> arr) {
-  if (arr.size() <= 1) {
-    std::vector<T> v(arr);
-    return v;
-  }
-
-  std::vector<T> result = arr;
   T tmp;
-  int64_t i, j, left, right, heapLength = arr.size();
+  int64_t i, j, left, right;
+  int64_t heapLength = arr.size();
+  std::vector<T> result = arr;
+
+  if (heapLength <= 1) {
+    return result;
+  }
 
   while (heapLength > 1) {
     for (i = heapLength / 2; i >= 0; i--) {

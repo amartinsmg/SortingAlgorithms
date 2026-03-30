@@ -16,15 +16,14 @@ namespace Sort {
 
 template <typename T>
 static inline std::vector<T> insertionsort(const std::vector<T> arr) {
-  if (arr.size() <= 1) {
-    std::vector<T> v(arr);
-    return v;
-  }
-
-  std::vector<T> result(arr);
   T tmp;
   size_t i;
   int64_t j;
+  std::vector<T> result(arr);
+
+  if (arr.size() <= 1) {
+    return result;
+  }
 
   for (i = 1; i < arr.size(); i++) {
     tmp = result[i];

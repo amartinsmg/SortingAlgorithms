@@ -16,15 +16,14 @@ namespace Sort {
 
 template <typename T>
 static inline std::vector<T> shellsort(const std::vector<T> arr) {
-  if (arr.size() <= 1) {
-    std::vector<T> v(arr);
-    return v;
-  }
-
-  std::vector<T> result = arr;
   T tmp;
-  int64_t i, j, k, l, pow2_i, length = arr.size(),
-                              log2_length = ceil(log2(length));
+  int64_t i, j, k, l, pow2_i;
+  int64_t length = arr.size(), log2_length = ceil(log2(length));
+  std::vector<T> result = arr;
+
+  if (length <= 1) {
+    return result;
+  }
 
   for (i = 1; i <= log2_length; i++) {
     pow2_i = pow(2, i);

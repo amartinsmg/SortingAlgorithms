@@ -16,22 +16,22 @@ namespace Sort {
 
 template <typename T>
 static inline std::vector<T> mergesort(const std::vector<T> arr) {
-  if (arr.size() <= 1) {
-    std::vector<T> v(arr);
-    return v;
-  }
-
-  size_t i, j, k, half, targetIndex, leftIndex, rightIndex, pow2_i,
-      length = arr.size(), log2_length = (size_t)ceil(log2((double)length));
+  size_t i, j, k, half, targetIndex, leftIndex, rightIndex, pow2_i;
+  size_t length = arr.size(), log2_length = (size_t)ceil(log2((double)length));
   std::vector<T> aux1 = arr, aux2 = arr, result(length);
-  T *src, *target, *left, *right, *buffer1 = aux1.data(),
-                                  *buffer2 = aux2.data();
+  T *src, *target, *left, *right;
+  T *buffer1 = aux1.data(), *buffer2 = aux2.data();
+
+  if (length <= 1) {
+    return result;
+  }
 
   for (i = 1; i <= log2_length; i++) {
     src = i % 2 ? buffer1 : buffer2, target = !(i % 2) ? buffer1 : buffer2;
     targetIndex = 0;
-    pow2_i = (size_t)pow(2, (double)i);
+    pow2_i = 1 << i;
     half = pow2_i / 2;
+
     for (j = 0; j < length; j += pow2_i) {
       left = (T *)(src + j);
       right = (T *)(left + half);
@@ -49,9 +49,9 @@ static inline std::vector<T> mergesort(const std::vector<T> arr) {
   }
 
   if (log2_length % 2)
-    result.assign(buffer2, buffer2 + length);
+    std::copy(buffer2, buffer2 + length, result.begin());
   else
-    result.assign(buffer1, buffer1 + length);
+    std::copy(buffer1, buffer1 + length, result.begin());
 
   return result;
 }

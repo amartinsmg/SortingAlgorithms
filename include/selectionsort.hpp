@@ -15,14 +15,14 @@ namespace Sort {
 
 template <typename T>
 static inline std::vector<T> selectionsort(const std::vector<T> arr) {
-  if (arr.size() <= 1) {
-    std::vector<T> v(arr);
-    return v;
-  }
-
-  std::vector<T> result(arr);
   T tmp;
-  size_t i, j, length = arr.size();
+  size_t i, j;
+  size_t length = arr.size();
+  std::vector<T> result(arr);
+
+  if (length <= 1) {
+    return result;
+  }
 
   for (i = 0; i < length; i++) {
     tmp = result[i];

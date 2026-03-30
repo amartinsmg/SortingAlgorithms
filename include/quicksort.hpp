@@ -18,8 +18,11 @@ template <typename T>
 static void quicksort_pipeline(T *arr, size_t left, size_t right) {
   if (left >= right)
     return;
-  size_t j, i = left;
-  T tmp, pivot = arr[right];
+
+  size_t j;
+  size_t i = left;
+  T tmp;
+  T pivot = arr[right];
 
   for (j = i; j <= right; j++) {
     if (arr[j] < pivot) {
@@ -46,12 +49,11 @@ static void quicksort_pipeline(T *arr, size_t left, size_t right) {
 
 template <typename T>
 static inline std::vector<T> quicksort(const std::vector<T> arr) {
-  if (arr.size() <= 1) {
-    std::vector<T> v(arr);
-    return v;
-  }
-
   std::vector<T> result(arr);
+
+  if (arr.size() <= 1) {
+    return result;
+  }
 
   quicksort_pipeline(result.data(), 0, arr.size() - 1);
 
