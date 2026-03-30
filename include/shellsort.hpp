@@ -16,8 +16,8 @@ namespace Sort {
 
 template <typename T>
 static inline std::vector<T> shellsort(const std::vector<T> arr) {
-  if (arr.size() == 0) {
-    std::vector<T> v(0);
+  if (arr.size() <= 1) {
+    std::vector<T> v(arr);
     return v;
   }
 
