@@ -19,14 +19,14 @@ static inline std::vector<T> bubblesort(const std::vector<T> arr) {
   T tmp;
   size_t i, j;
   size_t length = arr.size();
-  bool hasSwap;
+  bool hasSwap = true;
   std::vector<T> result(arr);
 
   if (length <= 1) {
     return result;
   }
 
-  for (i = 0; i < length; i++) {
+  for (i = 0; i < length && hasSwap; i++) {
     hasSwap = false;
     for (j = 1; j < length; j++) {
       tmp = result[j];
@@ -36,9 +36,6 @@ static inline std::vector<T> bubblesort(const std::vector<T> arr) {
         hasSwap = true;
       }
     }
-
-    if (!hasSwap)
-      break;
   }
   return result;
 }
